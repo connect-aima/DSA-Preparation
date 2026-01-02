@@ -58,6 +58,61 @@ public:
             temp->next=newNode;
         }
     }
+    //Deletion
+    void deletionAtHead(){
+        if(head==nullptr){
+            cout << "empty" <<endl;
+        }else{
+           Node* del=head;
+           head=head->next;
+           delete del;
+        }
+    }
+    void deletionAtPosition(int pos){
+         if(pos<0){
+            cout << " invalid pos " <<endl;
+            return;
+        }
+        if(head==nullptr{
+            cout << " Empty " <<endl;
+            return;
+        })
+        if(pos==0){
+            deletionAtHead();
+            return;
+        }
+        Node* temp=head;
+        int currPos=0;
+        while(currPos<pos-1&&temp->next!=nullptr){
+            temp=temp->next;
+            currPos++;
+        }
+        if(temp->next==nullptr){
+            cout << "out of bond" <<endl;
+            return;
+        }
+       Node* del=temp->next;
+       temp->next=temp->next->next;
+       delete del;
+    }
+    void deletionAtTail(){
+        if(head==nullptr){
+            return;
+        }else if (head->next == nullptr) {
+            delete head;
+            head = nullptr;
+            return;
+        }else{
+            Node* temp=head;
+            //stop temp at second last node
+            while(temp->next->next!=nullptr){
+                temp=temp->next;
+            }
+            Node* toDelete = temp->next; 
+            temp->next = nullptr;      
+            delete toDelete;   
+        }
+    }
     void display(){
         if (head == nullptr)
         {
