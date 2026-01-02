@@ -73,10 +73,10 @@ public:
             cout << " invalid pos " <<endl;
             return;
         }
-        if(head==nullptr{
+        if(head==nullptr){
             cout << " Empty " <<endl;
             return;
-        })
+        }
         if(pos==0){
             deletionAtHead();
             return;
@@ -113,7 +113,148 @@ public:
             delete toDelete;   
         }
     }
+     void searchAndUpdate(int org, int val)
+    {
+        if (head == nullptr)
+        {
+            cout << "List is empty" << endl;
+            return;
+        }
+        Node *temp = head;
+        while (temp != nullptr)
+        {
+            if (temp->data == org)
+                break;
+            temp = temp->next;
+        }
+        temp->data = val;
+        cout << "value is updated!" << endl;
+    }
+    void splitList()
+    {
+        if (head == nullptr)
+        {
+            cout << "List is empty" << endl;
+            return;
+        }
+        Node *slow = head;
+        Node *fast = head->next;
+        while (fast != nullptr && fast->next != nullptr)
+        {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        Node *head2 = slow->next;
+        slow->next = nullptr;
+        display(head);
+        display(head2);
+    }
+    void bubbleSort(){
+        if (head == nullptr)
+        {
+            cout << "List is empty" << endl;
+            return;
+        }
+        Node* i=head;
+        while(i->next!=nullptr){//outer loop second last node
+            Node* j=i->next;
+            while(j!=nullptr){ //inner loop till end
+                if(i->data>j->data){
+                    int temp=i->data;
+                    i->data=j->data;
+                    j->data=temp;
+                }
+                j=j->next;
+            }
+            i=i->next;
+        }
+    }
+    //reversing list using recursion
+     Node *reverseLinkedListRecursion(Node *&head)
+    {
+        if (head == NULL || head->next == NULL)
+        {
+            return head;
+        }
+        Node *newHead = reverseLinkedListRecursion(head->next);
+        head->next->next = head;
+        head->next = NULL;
+        return newHead;
+    }
+      Node *mergeLinkedList(Node *&head1, Node *&head2)
+    {
+        if (head1 == NULL)
+            return head2;
+        if (head2 == NULL)
+            return head1;
+        Node *temp = head1;
+        while (temp->next != NULL)
+        {
+            temp = temp->next;
+        }
+        temp->next = head2;
+        return head1;
+    }
+    void deleteOdd(Node *&head)
+    {
+        Node *curr = head;
+        while (curr != NULL && curr->next != NULL)
+        {
+            Node *temp = curr->next;
+            curr->next = curr->next->next;
+            delete (temp);
+            curr = curr->next;
+        }
+    }
+    // deleting dublicates in linked list
+    void deleteDublicates(Node *head)
+    {
+        Node *curr = head;
+        while (curr != NULL && curr->next != NULL)
+        {
+            Node *temp = curr->next;
+            if (curr->data == temp->data)
+            {
+                curr->next = curr->next->next;
+                delete (temp);
+            }
+            else
+            {
+                curr = curr->next;
+            }
+        }
+    }
+    // display
+    void display()
+    {
+        if (head == nullptr)
+        {
+            cout << "List is empty" << endl;
+            return;
+        }
+        Node *temp = head;
+        while (temp != nullptr)
+        {
+            cout << temp->data << "->";
+            temp = temp->next;
+        }
+        cout << "NULL" << endl;
+    }
     void display(){
+        if (head == nullptr)
+        {
+            cout << "List is empty" << endl;
+            return;
+        }
+        Node* temp=head;
+        while (temp!=nullptr)
+        {
+            cout << temp->data << "->" ;
+            temp=temp->next;
+        }
+        cout << "null" << endl;       
+    }
+    void display(Node* head){
         if (head == nullptr)
         {
             cout << "List is empty" << endl;
@@ -131,10 +272,12 @@ public:
 
 int main() {
     SinglyLinkedList sll;
-    sll.inserAtHead(0);
-    sll.inserAtHead(-1);
+    sll.inserAtHead(55);
+    sll.inserAtHead(56);
     sll.insertAtTail(3);
-    sll.insertAtPosition(2,2);
+    sll.insertAtPosition(2,100);
+    sll.display();
+    sll.bubbleSort();
     sll.display();
     return 0;
 }
