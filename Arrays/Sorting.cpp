@@ -28,7 +28,7 @@ void insertionSort(int arr[],int n){//O(n*n)
     }
 }
 //helper function of merge sort
-void merge(int arr[],int s,int mid,int e){
+void merge(int arr[],int s,int mid,int e){//O(n)
     vector<int> temp;
     int i=s;
     int j=mid+1;
@@ -54,11 +54,11 @@ void merge(int arr[],int s,int mid,int e){
         arr[k+s]=temp[k];
     }
 }
-void mergeSort(int arr[],int n,int s,int e){
+void mergeSort(int arr[],int s,int e){
     if(s<e){
         int mid=s+(e-s)/2;
-        mergeSort(arr, n, s, mid);//leftHalf
-        mergeSort(arr,n,mid+1,e);//right half
+        mergeSort(arr, s, mid);//leftHalf
+        mergeSort(arr,mid+1,e);//right half
         merge(arr,s,mid,e);
     }
 }
@@ -81,7 +81,7 @@ int main() {
     // insertionSort(arr,size);
     int s=0;
     int e=size-1;
-    mergeSort(arr,size,s,e);
+    mergeSort(arr,s,e);
      //traversing on array
     for(int i=0;i<size;i++){
         cout << arr[i] << " ";
