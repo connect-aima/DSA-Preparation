@@ -22,9 +22,6 @@ void reverseArray(int arr[],int n){
     }   
 }       
 
-void insertion(int arr[],int n , int t){
-    
-}
 
 
 int main() {
