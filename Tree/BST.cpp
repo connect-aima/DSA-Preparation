@@ -1,5 +1,17 @@
 #include <iostream>
 using namespace std;
+#include <queue>
+// There are 4 standard traversals:
+
+// 🔹 DFS (Depth First Search) — 3 types
+
+// Inorder
+
+// Preorder
+
+// Postorder
+
+// 🔹 BFS (Breadth First Search) — 1 type
 class Node{
 public:
     int data;
@@ -116,6 +128,36 @@ class BinarySearchTree{
             return root;
         return findMin(root->left);
     }
+//LEVEL ORDER TRAVERSAL BFS
+
+void BFS(Node* root){
+    queue<Node*> q;
+//comented code is if we want each level at sep lines 
+    q.push(root);
+    // q.push(nullptr);
+    while(q.size()>0){
+        Node* curr=q.front();
+        q.pop();
+
+        // if(curr==nullptr){
+        //     if(!q.empty()){
+        //         cout << endl;
+        //         q.push(nullptr);
+        //         continue;
+        //     }else{
+        //         break;
+        //     }
+        // }
+        cout << curr->data << " " ;
+        if(curr->left!=nullptr){
+            q.push(curr->left);
+        }
+        if(curr->right!=nullptr){
+            q.push(curr->right);
+        }
+    }
+    cout << endl;
+}
 };
 int main() {
     
