@@ -20,10 +20,7 @@ void reverseArray(int arr[],int n){
         s++;
         e--;
     }   
-}       
-
-
-
+}        
 int main() {
     // //initializing array
     // int arr [5];
