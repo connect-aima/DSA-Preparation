@@ -1,8 +1,8 @@
 #include <iostream>
-#include <list>
+using namespace std;
 #include <queue>
 #include <vector>
-using namespace std;
+#include <list>
 class graph
 {
 public: 
@@ -13,7 +13,7 @@ public:
         V = v;
         l = new list<int>[V]; // initizalized list with size equale of no of vertices
     }
-    void addEdge(int u, int v)
+    void addEdges(int u, int v)
     {
         l[u].push_back(v); // 0->1
         l[v].push_back(u); // 1->0
@@ -37,20 +37,9 @@ public:
                 }
             }
         }
+        cout <<endl;
     }
-    // if graph is disconnected use following code
-    void bfsDisconnected()
-    {
-        vector<bool> vis(V, false);
 
-        for (int i = 0; i < V; i++)
-        {
-            if (!vis[i])
-            {
-                bfs(i, vis);
-            }
-        }
-    }
     void dfs(int u, vector<bool> &vis)
     {
         cout << u << " ";
@@ -67,15 +56,17 @@ public:
 int main()
 {
     vector<bool> vis(5, false);
-    graph g(5);
-    g.addEdge(0, 1);
-    g.addEdge(1, 2);
-    g.addEdge(1, 3);
-    g.addEdge(2, 4);
-    // cout << "BFS" << endl;
-    // g.bfs(0,vis);
-    cout << "DFS" << endl;
-    g.dfs(0, vis);
+   graph g(5); // 5 intersections: A(0), B(1), C(2), D(3), E(4)
+
+    // Add edges
+    g.addEdges(0, 1); // A-B
+    g.addEdges(0, 2); // A-C
+    g.addEdges(1, 3); // B-D
+    g.addEdges(2, 4); // C-E
+
+    g.bfs(0,vis); // run BFS
+    fill(vis.begin(), vis.end(), false);
+    g.dfs(0,vis); // run DFS
 
     return 0;
 }

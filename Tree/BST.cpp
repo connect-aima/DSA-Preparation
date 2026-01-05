@@ -115,7 +115,7 @@ class BinarySearchTree{
         cout << root->data << " ";
     }
     Node* findMax(Node* &root){
-        if (root == nullptr)
+        if (root == nullptr) 
         return nullptr;
         if (root->right == nullptr)
             return root;
