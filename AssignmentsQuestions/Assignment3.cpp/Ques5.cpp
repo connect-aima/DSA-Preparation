@@ -49,7 +49,7 @@ int kruskalsMST(int V, vector<vector<int>> &edges, vector<pair<string, string>> 
 
     cout << "Kruskal's Algorithm Steps:\n"; //fixed
     for (auto &e : edges) {
-        int x = e[0], y = e[1], w = e[2];
+        int x = e[0], y = e[1], w = e[2];//x=src y=des w=weight
 
         // Check for cycle
         if (dsu.find(x) != dsu.find(y)) {
