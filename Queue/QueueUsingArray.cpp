@@ -48,7 +48,7 @@ public:
 
     
     void front() {
-        if(empty()) {
+        if(empty()) { 
             cout << "Queue is empty\n";
             return;
         }
