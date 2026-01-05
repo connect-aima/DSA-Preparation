@@ -235,8 +235,8 @@ public:
         }
         int i = currSize - 1; // start from last element
         while (i >= 0 && prio[i] > p) { // fixed: maintain ascending order by priority
-            arr[i + 1] = arr[i];
-            prio[i + 1] = prio[i];
+            arr[i + 1] = arr[i];//right shift
+            prio[i + 1] = prio[i];//right shift
             i--;
         }
 
@@ -257,8 +257,8 @@ public:
     // shift everything left
     for(int i = 0; i <currSize-1 ; i++) //looping till second last index
     {
-        arr[i] = arr[i + 1];
-        prio[i] = prio[i + 1];
+        arr[i] = arr[i + 1];//left shift
+        prio[i] = prio[i + 1];//left shift
     }
     currSize--;
     }

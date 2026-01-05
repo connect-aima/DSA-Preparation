@@ -1,0 +1,45 @@
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+struct Transaction {
+    int transactionID;
+    string productName;
+    double amount;
+    long long timestamp;
+};
+
+// Comparator function
+bool compare(Transaction a, Transaction b) {
+    if (a.amount != b.amount)
+        return a.amount > b.amount; // Descending by amount
+    return a.timestamp < b.timestamp; // Ascending by timestamp
+}
+
+int main() {
+    int n;
+    cin >> n; // Number of transactions
+
+    vector<Transaction> transactions(n);
+
+    for (int i = 0; i < n; i++) {
+        cin >> transactions[i].transactionID
+            >> transactions[i].productName
+            >> transactions[i].amount
+            >> transactions[i].timestamp;
+    }
+
+    sort(transactions.begin(), transactions.end(), compare);
+
+    // Output sorted transactions
+    for (int i = 0; i < n; i++) {
+        cout << transactions[i].transactionID << " "
+             << transactions[i].productName << " "
+             << transactions[i].amount << " "
+             << transactions[i].timestamp << "\n";
+    }
+
+    return 0;
+}
