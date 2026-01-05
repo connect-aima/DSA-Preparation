@@ -28,7 +28,7 @@ void insertionSort(int arr[],int n){//O(n*n)
     }
 }
 //helper function of merge sort
-void merge(int arr[],int s,int mid,int e){//O(n)
+void merge(int arr[],int s,int mid,int e){//O(logn)
     vector<int> temp;
     int i=s;
     int j=mid+1;
