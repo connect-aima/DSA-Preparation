@@ -158,6 +158,28 @@ void BFS(Node* root){
     }
     cout << endl;
 }
+void levelOrderTraversals(Node* &root){
+    if(!root){
+        return;
+    }
+    queue<Node*>q;
+    q.push(root);
+    while(!q.empty()){
+        int levelsize=q.size();
+        while ((levelsize--))
+        {
+            Node* current=q.front();
+            q.pop();
+            cout << current->data << " ";
+            if(current->left){
+                q.push(current->left);
+            }
+            if(current->right){
+                q.push(current->right);
+            }
+        }
+    }
+}
 };
 int main() {
     

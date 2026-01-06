@@ -5,7 +5,7 @@
 // using namespace std;
 
 // struct Edge {
-//     int u, v, w;
+//     int u, v, w;//src des weight
 // };
 
 // pair<int, vector<Edge>> primMST(
